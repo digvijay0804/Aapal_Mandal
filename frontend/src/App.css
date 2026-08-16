@@ -15,15 +15,17 @@ body {
 
 button,
 input,
-select {
+select,
+textarea {
   font-family: inherit;
 }
+
+/* ================= APP ================= */
 
 .app {
   min-height: 100vh;
   padding: 25px 20px 0;
 }
-
 
 /* ================= HEADER ================= */
 
@@ -34,7 +36,6 @@ select {
 
   background: #ffffff;
   border-top: 6px solid #f07800;
-
   border-radius: 20px;
 
   padding: 25px;
@@ -54,7 +55,6 @@ select {
   height: 140px;
 
   object-fit: contain;
-
   flex-shrink: 0;
 }
 
@@ -89,7 +89,6 @@ select {
   display: inline-block;
 
   margin-top: 10px;
-
   padding: 8px 20px;
 
   border: 2px solid #f07800;
@@ -99,7 +98,6 @@ select {
 
   font-weight: bold;
 }
-
 
 /* ================= MAIN ================= */
 
@@ -115,7 +113,6 @@ select {
 
   gap: 25px;
 }
-
 
 /* ================= CARD ================= */
 
@@ -139,7 +136,6 @@ select {
   font-size: 25px;
 }
 
-
 /* ================= FORM ================= */
 
 form {
@@ -147,17 +143,36 @@ form {
   flex-direction: column;
 }
 
+/* LABEL FIX */
+
 label {
+  display: block;
+
   margin-top: 16px;
   margin-bottom: 7px;
 
   font-weight: bold;
 
   color: #563535;
+
+  line-height: 1.6;
 }
 
+/*
+  जर label मध्ये English + Marathi text असेल,
+  तर दोन्ही text मध्ये natural spacing मिळेल.
+*/
+
+label span {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+/* ================= INPUT FIX ================= */
+
 input,
-select {
+select,
+textarea {
   width: 100%;
 
   padding: 14px;
@@ -168,17 +183,72 @@ select {
 
   font-size: 16px;
 
-  background: #ffffff;
+  background-color: #ffffff !important;
+
+  /*
+    IMPORTANT:
+    User ने type केलेला text mobile वर दिसण्यासाठी
+  */
+  color: #3b2020 !important;
+
+  /*
+    काही mobile browsers मध्ये text transparent
+    किंवा inherited असल्यास हा fix करतो.
+  */
+  -webkit-text-fill-color: #3b2020 !important;
+
+  opacity: 1 !important;
 
   outline: none;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  box-shadow: none;
 }
 
+/* Placeholder */
+
+input::placeholder,
+textarea::placeholder {
+  color: #777777 !important;
+
+  -webkit-text-fill-color: #777777 !important;
+
+  opacity: 1 !important;
+}
+
+/* Focus */
+
 input:focus,
-select:focus {
+select:focus,
+textarea:focus {
   border-color: #f07800;
 
   box-shadow: 0 0 0 2px rgba(240, 120, 0, 0.10);
+
+  color: #3b2020 !important;
+
+  -webkit-text-fill-color: #3b2020 !important;
 }
+
+/* Autofill fix - Chrome / Android */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill {
+  -webkit-text-fill-color: #3b2020 !important;
+
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* ================= BUTTON ================= */
 
 button {
   width: 100%;
@@ -213,7 +283,6 @@ button:disabled {
 
   cursor: not-allowed;
 }
-
 
 /* ================= QR ================= */
 
@@ -273,7 +342,6 @@ button:disabled {
 
   font-weight: bold;
 }
-
 
 /* ================= RECEIPT ================= */
 
@@ -373,7 +441,6 @@ button:disabled {
   line-height: 1.8;
 }
 
-
 /* ================= FOOTER ================= */
 
 footer {
@@ -392,11 +459,9 @@ footer {
   line-height: 1.8;
 }
 
-
 /* ================= TABLET ================= */
 
 @media (max-width: 900px) {
-
   .mandal-header {
     gap: 15px;
   }
@@ -414,14 +479,11 @@ footer {
   .main-grid {
     grid-template-columns: 1fr;
   }
-
 }
-
 
 /* ================= MOBILE ================= */
 
 @media (max-width: 600px) {
-
   .app {
     padding: 12px 10px 0;
   }
@@ -468,6 +530,7 @@ footer {
     padding: 7px 12px;
   }
 
+  /* ================= MOBILE MAIN ================= */
 
   .main-grid {
     display: flex;
@@ -479,7 +542,6 @@ footer {
     gap: 18px;
   }
 
-
   .card {
     padding: 20px 16px;
 
@@ -490,24 +552,88 @@ footer {
     font-size: 22px;
   }
 
+  /* ================= MOBILE LABEL ================= */
 
   label {
     font-size: 15px;
+
+    line-height: 1.7;
+
+    margin-top: 18px;
+
+    margin-bottom: 8px;
+
+    /*
+      English + Marathi label एकमेकांना चिकटणार नाही
+    */
+    white-space: normal;
+
+    overflow-wrap: break-word;
   }
 
+  label span {
+    margin-left: 6px;
+  }
+
+  /* ================= MOBILE INPUT ================= */
+
   input,
-  select {
-    padding: 13px;
+  select,
+  textarea {
+    width: 100%;
+
+    min-height: 52px;
+
+    padding: 13px 14px;
 
     font-size: 16px;
+
+    /*
+      Android / Chrome वर entered value clearly दिसेल
+    */
+    color: #3b2020 !important;
+
+    -webkit-text-fill-color: #3b2020 !important;
+
+    background-color: #ffffff !important;
+
+    opacity: 1 !important;
+
+    border: 1px solid #cccccc;
+
+    border-radius: 10px;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #f07800;
+
+    box-shadow: 0 0 0 2px rgba(240, 120, 0, 0.15);
+
+    color: #3b2020 !important;
+
+    -webkit-text-fill-color: #3b2020 !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #777777 !important;
+
+    -webkit-text-fill-color: #777777 !important;
+
+    opacity: 1 !important;
   }
 
   button {
     padding: 14px;
 
     font-size: 17px;
+
+    min-height: 52px;
   }
 
+  /* ================= MOBILE QR ================= */
 
   .upi-qr {
     width: 220px;
@@ -518,11 +644,14 @@ footer {
     font-size: 14px;
   }
 
+  /* ================= MOBILE RECEIPT ================= */
 
   .receipt-card {
     padding: 20px 15px;
 
     margin-top: 18px;
+
+    border-radius: 15px;
   }
 
   .receipt-header {
@@ -542,7 +671,6 @@ footer {
     line-height: 1.4;
   }
 
-
   .receipt-row {
     flex-direction: column;
 
@@ -555,7 +683,6 @@ footer {
     font-size: 19px;
   }
 
-
   footer {
     margin-top: 25px;
 
@@ -565,11 +692,9 @@ footer {
   }
 }
 
-
 /* ================= VERY SMALL MOBILE ================= */
 
 @media (max-width: 380px) {
-
   .header-text h1 {
     font-size: 21px;
   }
@@ -587,5 +712,21 @@ footer {
   .upi-qr {
     width: 190px;
     height: 190px;
+  }
+
+  input,
+  select,
+  textarea {
+    min-height: 50px;
+
+    padding: 12px;
+
+    font-size: 16px;
+  }
+
+  label {
+    font-size: 14px;
+
+    line-height: 1.7;
   }
 }
