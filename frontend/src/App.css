@@ -1,3 +1,14 @@
+/* =========================================================
+   KRANTI YUVAK GANESH MANDAL
+   DONATION / RECEIPT APPLICATION
+   COMPLETE RESPONSIVE CSS
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
 * {
   box-sizing: border-box;
 }
@@ -20,21 +31,29 @@ textarea {
   font-family: inherit;
 }
 
-/* ================= APP ================= */
+
+/* =========================================================
+   APP
+   ========================================================= */
 
 .app {
   min-height: 100vh;
   padding: 25px 20px 0;
 }
 
-/* ================= HEADER ================= */
+
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .mandal-header {
   width: 100%;
   max-width: 1150px;
+
   margin: 0 auto;
 
   background: #ffffff;
+
   border-top: 6px solid #f07800;
   border-radius: 20px;
 
@@ -49,25 +68,33 @@ textarea {
   box-shadow: 0 8px 25px rgba(100, 40, 0, 0.12);
 }
 
+
 .mandal-logo,
 .kranti-logo {
   width: 140px;
   height: 140px;
 
   object-fit: contain;
+
   flex-shrink: 0;
 }
 
+
 .header-text {
   flex: 1;
+
   text-align: center;
 }
 
+
 .bappa-title {
   color: #e35d00;
+
   font-size: 20px;
+
   font-weight: bold;
 }
+
 
 .header-text h1 {
   margin: 10px 0;
@@ -75,23 +102,29 @@ textarea {
   color: #8f1515;
 
   font-size: 38px;
+
   line-height: 1.25;
 }
+
 
 .established {
   margin: 5px 0;
 
   font-size: 18px;
+
   font-weight: bold;
 }
+
 
 .festival {
   display: inline-block;
 
   margin-top: 10px;
+
   padding: 8px 20px;
 
   border: 2px solid #f07800;
+
   border-radius: 25px;
 
   color: #8f1515;
@@ -99,7 +132,10 @@ textarea {
   font-weight: bold;
 }
 
-/* ================= MAIN ================= */
+
+/* =========================================================
+   MAIN
+   ========================================================= */
 
 .main-grid {
   width: 100%;
@@ -114,7 +150,10 @@ textarea {
   gap: 25px;
 }
 
-/* ================= CARD ================= */
+
+/* =========================================================
+   CARD
+   ========================================================= */
 
 .card {
   background: #ffffff;
@@ -126,6 +165,7 @@ textarea {
   box-shadow: 0 8px 25px rgba(100, 40, 0, 0.10);
 }
 
+
 .card h2 {
   margin-top: 0;
 
@@ -136,19 +176,27 @@ textarea {
   font-size: 25px;
 }
 
-/* ================= FORM ================= */
+
+/* =========================================================
+   FORM
+   ========================================================= */
 
 form {
   display: flex;
+
   flex-direction: column;
 }
 
-/* LABEL FIX */
+
+/* =========================================================
+   LABEL
+   ========================================================= */
 
 label {
   display: block;
 
   margin-top: 16px;
+
   margin-bottom: 7px;
 
   font-weight: bold;
@@ -156,19 +204,92 @@ label {
   color: #563535;
 
   line-height: 1.6;
+
+  text-align: center;
 }
+
 
 /*
-  जर label मध्ये English + Marathi text असेल,
-  तर दोन्ही text मध्ये natural spacing मिळेल.
+   English + Marathi labels
 */
 
-label span {
+label span,
+label small {
   display: inline-block;
-  margin-left: 5px;
+
+  vertical-align: baseline;
 }
 
-/* ================= INPUT FIX ================= */
+
+label span {
+  margin-left: 0;
+}
+
+
+label small {
+  margin-left: 10px;
+
+  font-size: 0.9em;
+
+  font-weight: 600;
+
+  color: #563535;
+}
+
+
+/* =========================================================
+   SPECIFIC FORM LABELS
+   ========================================================= */
+
+label[for="donor_name"],
+label[for="mobile"],
+label[for="amount"],
+label[for="payment_mode"] {
+  display: flex !important;
+
+  justify-content: center !important;
+
+  align-items: baseline !important;
+
+  gap: 10px !important;
+
+  flex-wrap: wrap !important;
+
+  text-align: center !important;
+}
+
+
+label[for="donor_name"] span,
+label[for="mobile"] span,
+label[for="amount"] span,
+label[for="payment_mode"] span {
+  font-size: 20px;
+
+  font-weight: 700;
+
+  line-height: 1.4;
+}
+
+
+label[for="donor_name"] small,
+label[for="mobile"] small,
+label[for="amount"] small,
+label[for="payment_mode"] small {
+  margin-left: 0;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   INPUT / SELECT / TEXTAREA
+   ========================================================= */
 
 input,
 select,
@@ -185,16 +306,8 @@ textarea {
 
   background-color: #ffffff !important;
 
-  /*
-    IMPORTANT:
-    User ने type केलेला text mobile वर दिसण्यासाठी
-  */
   color: #3b2020 !important;
 
-  /*
-    काही mobile browsers मध्ये text transparent
-    किंवा inherited असल्यास हा fix करतो.
-  */
   -webkit-text-fill-color: #3b2020 !important;
 
   opacity: 1 !important;
@@ -202,12 +315,16 @@ textarea {
   outline: none;
 
   appearance: none;
+
   -webkit-appearance: none;
 
   box-shadow: none;
 }
 
-/* Placeholder */
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
 
 input::placeholder,
 textarea::placeholder {
@@ -218,7 +335,10 @@ textarea::placeholder {
   opacity: 1 !important;
 }
 
-/* Focus */
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
 
 input:focus,
 select:focus,
@@ -232,7 +352,11 @@ textarea:focus {
   -webkit-text-fill-color: #3b2020 !important;
 }
 
-/* Autofill fix - Chrome / Android */
+
+/* =========================================================
+   AUTOFILL FIX
+   Chrome / Android
+   ========================================================= */
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -248,7 +372,10 @@ select:-webkit-autofill {
   transition: background-color 9999s ease-in-out 0s;
 }
 
-/* ================= BUTTON ================= */
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
 
 button {
   width: 100%;
@@ -274,9 +401,11 @@ button {
   transition: 0.2s;
 }
 
+
 button:hover {
   background: #d96300;
 }
+
 
 button:disabled {
   opacity: 0.6;
@@ -284,17 +413,22 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* ================= QR ================= */
+
+/* =========================================================
+   QR
+   ========================================================= */
 
 .qr-card {
   text-align: center;
 }
+
 
 .scan-heading {
   font-weight: bold;
 
   color: #8f1515;
 }
+
 
 .upi-qr {
   display: block;
@@ -317,11 +451,13 @@ button:disabled {
   background: white;
 }
 
+
 .qr-card h3 {
   margin-bottom: 5px;
 
   color: #8f1515;
 }
+
 
 .upi-id {
   font-size: 15px;
@@ -330,6 +466,7 @@ button:disabled {
 
   word-break: break-word;
 }
+
 
 .scan-text {
   margin-top: 20px;
@@ -343,10 +480,14 @@ button:disabled {
   font-weight: bold;
 }
 
-/* ================= RECEIPT ================= */
+
+/* =========================================================
+   RECEIPT
+   ========================================================= */
 
 .receipt-card {
   width: 100%;
+
   max-width: 1150px;
 
   margin: 30px auto;
@@ -362,6 +503,7 @@ button:disabled {
   box-shadow: 0 8px 25px rgba(100, 40, 0, 0.10);
 }
 
+
 .receipt-header {
   display: flex;
 
@@ -376,6 +518,7 @@ button:disabled {
   margin-bottom: 20px;
 }
 
+
 .receipt-logo {
   width: 80px;
   height: 80px;
@@ -383,15 +526,18 @@ button:disabled {
   object-fit: contain;
 }
 
+
 .receipt-header h2 {
   margin: 0;
 
   color: #8f1515;
 }
 
+
 .receipt-header p {
   margin-bottom: 0;
 }
+
 
 .success {
   text-align: center;
@@ -407,9 +553,11 @@ button:disabled {
   font-weight: bold;
 }
 
+
 .receipt-info {
   margin-top: 20px;
 }
+
 
 .receipt-row {
   display: flex;
@@ -423,11 +571,13 @@ button:disabled {
   border-bottom: 1px solid #eeeeee;
 }
 
+
 .amount-row {
   font-size: 20px;
 
   color: #8f1515;
 }
+
 
 .receipt-footer {
   margin-top: 20px;
@@ -441,7 +591,97 @@ button:disabled {
   line-height: 1.8;
 }
 
-/* ================= FOOTER ================= */
+
+/* =========================================================
+   RECEIPT HISTORY
+   ========================================================= */
+
+.receipt-history {
+  width: 100%;
+
+  color: #3b2020;
+
+  opacity: 1;
+
+  visibility: visible;
+}
+
+
+.receipt-history h2,
+.receipt-history h3 {
+  color: #8f1515 !important;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
+}
+
+
+.history-section {
+  width: 100%;
+
+  color: #3b2020;
+
+  opacity: 1;
+
+  visibility: visible;
+}
+
+
+.history-section h2,
+.history-section h3 {
+  color: #8f1515 !important;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
+}
+
+
+/* =========================================================
+   HISTORY TABLE / ROW
+   ========================================================= */
+
+.history-row {
+  color: #3b2020;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+
+.history-row strong,
+.history-row span,
+.history-row p {
+  color: #3b2020;
+}
+
+
+.history-card {
+  background: #ffffff;
+
+  color: #3b2020;
+
+  border-radius: 18px;
+
+  padding: 25px;
+
+  box-shadow: 0 8px 25px rgba(100, 40, 0, 0.10);
+}
+
+
+.history-card h2,
+.history-card h3 {
+  color: #8f1515 !important;
+
+  opacity: 1 !important;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 footer {
   width: 100%;
@@ -459,34 +699,49 @@ footer {
   line-height: 1.8;
 }
 
-/* ================= TABLET ================= */
+
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media (max-width: 900px) {
+
   .mandal-header {
     gap: 15px;
   }
 
+
   .mandal-logo,
   .kranti-logo {
     width: 110px;
+
     height: 110px;
   }
+
 
   .header-text h1 {
     font-size: 28px;
   }
+
 
   .main-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* ================= MOBILE ================= */
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 600px) {
+
   .app {
     padding: 12px 10px 0;
   }
+
+
+  /* ================= HEADER ================= */
 
   .mandal-header {
     flex-direction: column;
@@ -498,19 +753,24 @@ footer {
     border-radius: 15px;
   }
 
+
   .mandal-logo,
   .kranti-logo {
     width: 95px;
+
     height: 95px;
   }
+
 
   .header-text {
     width: 100%;
   }
 
+
   .bappa-title {
     font-size: 17px;
   }
+
 
   .header-text h1 {
     font-size: 24px;
@@ -520,9 +780,11 @@ footer {
     margin: 8px 0;
   }
 
+
   .established {
     font-size: 16px;
   }
+
 
   .festival {
     font-size: 14px;
@@ -530,7 +792,8 @@ footer {
     padding: 7px 12px;
   }
 
-  /* ================= MOBILE MAIN ================= */
+
+  /* ================= MAIN ================= */
 
   .main-grid {
     display: flex;
@@ -542,15 +805,20 @@ footer {
     gap: 18px;
   }
 
+
+  /* ================= CARD ================= */
+
   .card {
     padding: 20px 16px;
 
     border-radius: 15px;
   }
 
+
   .card h2 {
     font-size: 22px;
   }
+
 
   /* ================= MOBILE LABEL ================= */
 
@@ -563,17 +831,85 @@ footer {
 
     margin-bottom: 8px;
 
-    /*
-      English + Marathi label एकमेकांना चिकटणार नाही
-    */
     white-space: normal;
 
     overflow-wrap: break-word;
+
+    text-align: center;
   }
 
-  label span {
-    margin-left: 6px;
+
+  label span,
+  label small {
+    display: inline-block;
+
+    vertical-align: baseline;
   }
+
+
+  label span {
+    margin-left: 0;
+
+    font-size: 17px;
+  }
+
+
+  label small {
+    margin-left: 7px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    white-space: normal;
+  }
+
+
+  /* ================= MOBILE FORM LABEL ================= */
+
+  label[for="donor_name"],
+  label[for="mobile"],
+  label[for="amount"],
+  label[for="payment_mode"] {
+    display: flex !important;
+
+    justify-content: center !important;
+
+    align-items: baseline !important;
+
+    gap: 7px !important;
+
+    flex-wrap: wrap !important;
+
+    width: 100%;
+
+    text-align: center !important;
+  }
+
+
+  label[for="donor_name"] span,
+  label[for="mobile"] span,
+  label[for="amount"] span,
+  label[for="payment_mode"] span {
+    font-size: 17px !important;
+
+    line-height: 1.5 !important;
+  }
+
+
+  label[for="donor_name"] small,
+  label[for="mobile"] small,
+  label[for="amount"] small,
+  label[for="payment_mode"] small {
+    margin-left: 0 !important;
+
+    font-size: 15px !important;
+
+    line-height: 1.5 !important;
+
+    white-space: normal !important;
+  }
+
 
   /* ================= MOBILE INPUT ================= */
 
@@ -588,9 +924,6 @@ footer {
 
     font-size: 16px;
 
-    /*
-      Android / Chrome वर entered value clearly दिसेल
-    */
     color: #3b2020 !important;
 
     -webkit-text-fill-color: #3b2020 !important;
@@ -604,6 +937,7 @@ footer {
     border-radius: 10px;
   }
 
+
   input:focus,
   select:focus,
   textarea:focus {
@@ -616,6 +950,7 @@ footer {
     -webkit-text-fill-color: #3b2020 !important;
   }
 
+
   input::placeholder,
   textarea::placeholder {
     color: #777777 !important;
@@ -625,6 +960,9 @@ footer {
     opacity: 1 !important;
   }
 
+
+  /* ================= MOBILE BUTTON ================= */
+
   button {
     padding: 14px;
 
@@ -633,16 +971,20 @@ footer {
     min-height: 52px;
   }
 
+
   /* ================= MOBILE QR ================= */
 
   .upi-qr {
     width: 220px;
+
     height: 220px;
   }
+
 
   .upi-id {
     font-size: 14px;
   }
+
 
   /* ================= MOBILE RECEIPT ================= */
 
@@ -654,16 +996,20 @@ footer {
     border-radius: 15px;
   }
 
+
   .receipt-header {
     flex-direction: column;
 
     gap: 8px;
   }
 
+
   .receipt-logo {
     width: 70px;
+
     height: 70px;
   }
+
 
   .receipt-header h2 {
     font-size: 21px;
@@ -671,17 +1017,64 @@ footer {
     line-height: 1.4;
   }
 
+
   .receipt-row {
     flex-direction: column;
 
     gap: 4px;
 
     padding: 11px 5px;
+
+    text-align: center;
   }
+
 
   .amount-row {
     font-size: 19px;
   }
+
+
+  /* ================= MOBILE HISTORY ================= */
+
+  .receipt-history,
+  .history-section,
+  .history-card {
+    width: 100%;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    color: #3b2020 !important;
+  }
+
+
+  .receipt-history h2,
+  .receipt-history h3,
+  .history-section h2,
+  .history-section h3,
+  .history-card h2,
+  .history-card h3 {
+    color: #8f1515 !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    font-size: 22px;
+
+    text-align: center;
+  }
+
+
+  .history-row {
+    color: #3b2020 !important;
+
+    background: #ffffff !important;
+  }
+
+
+  /* ================= MOBILE FOOTER ================= */
 
   footer {
     margin-top: 25px;
@@ -692,27 +1085,42 @@ footer {
   }
 }
 
-/* ================= VERY SMALL MOBILE ================= */
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
 
 @media (max-width: 380px) {
+
   .header-text h1 {
     font-size: 21px;
   }
 
+
   .mandal-logo,
   .kranti-logo {
     width: 80px;
+
     height: 80px;
   }
+
 
   .card {
     padding: 17px 13px;
   }
 
+
+  .card h2 {
+    font-size: 20px;
+  }
+
+
   .upi-qr {
     width: 190px;
+
     height: 190px;
   }
+
 
   input,
   select,
@@ -724,9 +1132,109 @@ footer {
     font-size: 16px;
   }
 
+
   label {
     font-size: 14px;
 
     line-height: 1.7;
   }
+
+
+  label[for="donor_name"] span,
+  label[for="mobile"] span,
+  label[for="amount"] span,
+  label[for="payment_mode"] span {
+    font-size: 16px !important;
+  }
+
+
+  label[for="donor_name"] small,
+  label[for="mobile"] small,
+  label[for="amount"] small,
+  label[for="payment_mode"] small {
+    font-size: 14px !important;
+  }
+
+
+  button {
+    font-size: 16px;
+
+    min-height: 50px;
+  }
 }
+/* =========================================================
+   MOBILE FIX
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  label[for="donor_name"],
+  label[for="mobile"],
+  label[for="amount"],
+  label[for="payment_mode"] {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: baseline !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+    text-align: center !important;
+  }
+
+  label[for="donor_name"] span,
+  label[for="mobile"] span,
+  label[for="amount"] span,
+  label[for="payment_mode"] span {
+    font-size: 17px !important;
+    color: #3b2020 !important;
+  }
+
+  label[for="donor_name"] small,
+  label[for="mobile"] small,
+  label[for="amount"] small,
+  label[for="payment_mode"] small {
+    margin-left: 0 !important;
+    font-size: 15px !important;
+    color: #3b2020 !important;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100% !important;
+    min-height: 52px !important;
+    padding: 13px 14px !important;
+
+    background: #ffffff !important;
+    color: #3b2020 !important;
+
+    -webkit-text-fill-color: #3b2020 !important;
+    opacity: 1 !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #777777 !important;
+    -webkit-text-fill-color: #777777 !important;
+    opacity: 1 !important;
+  }
+
+  .receipt-history,
+  .history-section,
+  .history-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: #3b2020 !important;
+  }
+
+  .receipt-history h2,
+  .receipt-history h3,
+  .history-section h2,
+  .history-section h3,
+  .history-card h2,
+  .history-card h3 {
+    color: #8f1515 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
