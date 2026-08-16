@@ -1,0 +1,61 @@
+services:
+
+  postgres:
+    image: postgres:16-alpine
+
+    container_name: ganpati-postgres
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: ganpati
+      POSTGRES_PASSWORD: ganpati123
+      POSTGRES_DB: ganpati_receipts
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - ganpati_postgres_data:/var/lib/postgresql/data
+
+
+  backend:
+    build:
+      context: ./backend
+
+    container_name: ganpati-backend
+
+    restart: unless-stopped
+
+    depends_on:
+      - postgres
+
+    environment:
+      DB_USER: ganpati
+      DB_PASSWORD: ganpati123
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ganpati_receipts
+      PORT: 5000
+
+    ports:
+      - "5000:5000"
+
+
+  frontend:
+    build:
+      context: ./frontend
+
+    container_name: ganpati-frontend
+
+    restart: unless-stopped
+
+    depends_on:
+      - backend
+
+    ports:
+      - "3000:80"
+
+
+volumes:
+  ganpati_postgres_data:

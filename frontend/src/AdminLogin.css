@@ -1,0 +1,1119 @@
+/* =====================================================
+   ADMIN LOGIN
+   KRANTI YUVAK GANESH MANDAL
+   MOBILE FIRST
+   ===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.admin-login-page {
+  position: relative;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px 12px 62px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(255, 153, 51, 0.22),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(139, 20, 20, 0.15),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #fff7e9 0%,
+      #fffdf9 50%,
+      #fff0d4 100%
+    );
+
+  font-family:
+    Arial,
+    "Noto Sans Devanagari",
+    "Nirmala UI",
+    sans-serif;
+}
+
+
+/* =====================================================
+   BACKGROUND GLOW
+   ===================================================== */
+
+.login-glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(2px);
+}
+
+.login-glow-one {
+  width: 260px;
+  height: 260px;
+
+  top: -150px;
+  left: -120px;
+
+  border: 1px solid rgba(214, 102, 0, 0.18);
+
+  box-shadow:
+    0 0 80px rgba(244, 143, 45, 0.08);
+}
+
+.login-glow-two {
+  width: 300px;
+  height: 300px;
+
+  right: -160px;
+  bottom: -160px;
+
+  border: 1px solid rgba(143, 23, 23, 0.14);
+
+  box-shadow:
+    0 0 90px rgba(143, 23, 23, 0.08);
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+   ===================================================== */
+
+.admin-login-container {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1050px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(222, 196, 162, 0.8);
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 20px 55px rgba(75, 30, 0, 0.16),
+    0 6px 20px rgba(75, 30, 0, 0.06);
+}
+
+
+/* =====================================================
+   BRAND PANEL
+   ===================================================== */
+
+.login-brand {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 28px 18px 25px;
+
+  text-align: center;
+
+  color: #ffffff;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 190, 90, 0.22),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      #5b0b0b 0%,
+      #7f1515 50%,
+      #590909 100%
+    );
+}
+
+
+/* Decorative circles */
+
+.login-brand::before {
+  content: "";
+
+  position: absolute;
+
+  width: 210px;
+  height: 210px;
+
+  top: -120px;
+  right: -100px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 215, 160, 0.18);
+}
+
+.login-brand::after {
+  content: "";
+
+  position: absolute;
+
+  width: 160px;
+  height: 160px;
+
+  bottom: -100px;
+  left: -80px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 215, 160, 0.12);
+}
+
+
+/* =====================================================
+   FESTIVAL BADGE
+   ===================================================== */
+
+.brand-top {
+  position: relative;
+  z-index: 2;
+
+  display: inline-flex;
+
+  padding: 6px 12px;
+
+  border: 1px solid rgba(255, 220, 170, 0.38);
+
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: #ffe0ad;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.2px;
+}
+
+
+/* =====================================================
+   MANDAL LOGO
+   ===================================================== */
+
+.ganpati-logo {
+  position: relative;
+  z-index: 2;
+
+  width: 105px;
+  height: 105px;
+
+  margin: 17px 0 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  border: 3px solid #ffd796;
+
+  box-shadow:
+    0 0 0 6px rgba(255, 215, 150, 0.08),
+    0 12px 30px rgba(0, 0, 0, 0.28);
+
+  overflow: hidden;
+}
+
+
+/* Actual mandal image */
+
+.ganpati-logo img {
+  width: 100%;
+  height: 100%;
+
+  padding: 6px;
+
+  object-fit: contain;
+
+  display: block;
+
+  border-radius: 50%;
+}
+
+
+/* =====================================================
+   BRAND TITLE
+   ===================================================== */
+
+.login-brand h1 {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 25px;
+
+  line-height: 1.3;
+
+  font-weight: 900;
+
+  text-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
+.brand-location {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 4px;
+
+  color: #ffd59e;
+
+  font-size: 17px;
+
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   DIVIDER
+   ===================================================== */
+
+.brand-divider {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin: 13px 0 8px;
+
+  color: #ffc477;
+
+  font-size: 15px;
+}
+
+.brand-divider span {
+  width: 38px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 196, 119, 0.65)
+    );
+}
+
+.brand-divider span:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 196, 119, 0.65),
+      transparent
+    );
+}
+
+
+/* =====================================================
+   DESCRIPTION
+   ===================================================== */
+
+.login-brand > p {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+  color: #f5d9c6;
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   BRAND INFO
+   ===================================================== */
+
+.brand-info {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  width: 100%;
+  max-width: 230px;
+
+  margin-top: 17px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 220, 170, 0.25);
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  backdrop-filter: blur(5px);
+}
+
+.brand-info div {
+  padding: 9px;
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.brand-info div + div {
+  border-left: 1px solid rgba(255, 220, 170, 0.2);
+}
+
+.brand-info strong {
+  display: block;
+
+  color: #ffd28e;
+
+  font-size: 17px;
+
+  font-weight: 900;
+}
+
+.brand-info span {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #eac9b9;
+
+  font-size: 9px;
+
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   LOGIN CARD
+   ===================================================== */
+
+.login-card {
+  padding: 28px 20px 25px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fffdfb 100%
+    );
+}
+
+
+/* =====================================================
+   LOGIN HEADER
+   ===================================================== */
+
+.login-header {
+  text-align: center;
+
+  margin-bottom: 22px;
+}
+
+.login-icon {
+  width: 55px;
+  height: 55px;
+
+  margin: 0 auto 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff4df,
+      #fffaf2
+    );
+
+  border: 1px solid #e8c58f;
+
+  border-radius: 15px;
+
+  font-size: 24px;
+
+  box-shadow:
+    0 7px 18px rgba(180, 100, 20, 0.10);
+}
+
+.login-label {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #d06400;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.4px;
+}
+
+.login-header h2 {
+  margin: 0;
+
+  color: #701515;
+
+  font-size: 25px;
+
+  font-weight: 900;
+}
+
+.login-header p {
+  margin: 5px 0 0;
+
+  color: #806969;
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   ERROR
+   ===================================================== */
+
+.login-error {
+  margin-bottom: 16px;
+
+  padding: 10px 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff2f2,
+      #fff8f8
+    );
+
+  border: 1px solid #efc5c5;
+
+  border-radius: 9px;
+
+  color: #a51e1e;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  text-align: left;
+
+  animation: loginError 0.25s ease;
+}
+
+@keyframes loginError {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =====================================================
+   FORM
+   ===================================================== */
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #442d2d;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+.input-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+
+  left: 13px;
+
+  font-size: 15px;
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+.input-wrapper input {
+  width: 100%;
+
+  height: 48px;
+
+  padding: 0 45px;
+
+  background: #fffdfa;
+
+  border: 1px solid #d9cbb9;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  color: #382323;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.input-wrapper input::placeholder {
+  color: #aa9999;
+}
+
+.input-wrapper input:focus {
+  background: #ffffff;
+
+  border-color: #d76a00;
+
+  box-shadow:
+    0 0 0 3px rgba(215, 106, 0, 0.09);
+}
+
+
+/* =====================================================
+   PASSWORD TOGGLE
+   ===================================================== */
+
+.password-toggle {
+  position: absolute;
+
+  right: 6px;
+
+  width: 36px;
+  height: 36px;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+
+  border: none;
+
+  border-radius: 7px;
+
+  color: #765858;
+
+  cursor: pointer;
+
+  font-size: 15px;
+}
+
+.password-toggle:hover {
+  background: #fff2df;
+}
+
+
+/* =====================================================
+   LOGIN BUTTON
+   ===================================================== */
+
+.login-submit {
+  width: 100%;
+
+  height: 50px;
+
+  margin-top: 6px;
+
+  padding: 0 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #a31f1f 0%,
+      #781313 55%,
+      #641010 100%
+    );
+
+  border: none;
+
+  border-radius: 10px;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 900;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 9px 22px rgba(105, 15, 15, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.login-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 13px 27px rgba(105, 15, 15, 0.28);
+}
+
+.login-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.login-submit:disabled {
+  opacity: 0.7;
+
+  cursor: not-allowed;
+}
+
+.login-arrow {
+  margin-left: 3px;
+
+  font-size: 18px;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+   ===================================================== */
+
+.back-button {
+  width: 100%;
+
+  height: 44px;
+
+  margin-top: 10px;
+
+  padding: 0;
+
+  background: #ffffff;
+
+  border: 1px solid #ded1c0;
+
+  border-radius: 9px;
+
+  color: #684d4d;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.back-button:hover:not(:disabled) {
+  background: #fff8ed;
+
+  border-color: #d5b98d;
+}
+
+.back-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   SECURITY
+   ===================================================== */
+
+.login-security {
+  margin-top: 17px;
+
+  padding-top: 13px;
+
+  border-top: 1px solid #eee5d9;
+
+  color: #8d7979;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  text-align: center;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.login-footer {
+  position: absolute;
+
+  bottom: 12px;
+
+  left: 10px;
+  right: 10px;
+
+  z-index: 3;
+
+  color: #896f6f;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  text-align: center;
+}
+
+.login-footer span {
+  color: #d46b00;
+
+  margin: 0 2px;
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (min-width: 501px) and (max-width: 800px) {
+
+  .admin-login-page {
+    padding: 25px 16px 70px;
+  }
+
+  .admin-login-container {
+    max-width: 520px;
+  }
+
+  .login-brand {
+    padding: 35px 25px;
+  }
+
+  .ganpati-logo {
+    width: 120px;
+    height: 120px;
+
+    margin: 20px 0 15px;
+  }
+
+  .login-brand h1 {
+    font-size: 28px;
+  }
+
+  .brand-location {
+    font-size: 20px;
+  }
+
+  .login-card {
+    padding: 40px 32px;
+  }
+}
+
+
+/* =====================================================
+   DESKTOP
+   ===================================================== */
+
+@media (min-width: 801px) {
+
+  .admin-login-page {
+    padding: 35px 20px 75px;
+  }
+
+  .admin-login-container {
+    grid-template-columns: 0.95fr 1.05fr;
+
+    border-radius: 30px;
+  }
+
+  .login-brand {
+    padding: 48px 42px;
+  }
+
+  .ganpati-logo {
+    width: 145px;
+    height: 145px;
+
+    margin: 25px 0 18px;
+  }
+
+  .ganpati-logo img {
+    padding: 10px;
+  }
+
+  .login-brand h1 {
+    font-size: 34px;
+  }
+
+  .brand-location {
+    font-size: 22px;
+  }
+
+  .brand-divider {
+    margin: 20px 0 12px;
+  }
+
+  .brand-divider span {
+    width: 60px;
+  }
+
+  .login-brand > p {
+    font-size: 14px;
+  }
+
+  .brand-info {
+    max-width: 300px;
+
+    margin-top: 28px;
+  }
+
+  .brand-info div {
+    padding: 14px;
+  }
+
+  .brand-info strong {
+    font-size: 21px;
+  }
+
+  .brand-info span {
+    font-size: 11px;
+  }
+
+  .login-card {
+    padding: 55px;
+  }
+
+  .login-header {
+    margin-bottom: 30px;
+  }
+
+  .login-icon {
+    width: 64px;
+    height: 64px;
+
+    font-size: 28px;
+  }
+
+  .login-header h2 {
+    font-size: 31px;
+  }
+
+  .login-header p {
+    font-size: 14px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  .input-wrapper input {
+    height: 52px;
+
+    font-size: 15px;
+  }
+
+  .login-submit {
+    height: 53px;
+
+    font-size: 15px;
+  }
+
+  .back-button {
+    height: 46px;
+
+    font-size: 14px;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 360px) {
+
+  .admin-login-page {
+    padding: 10px 8px 58px;
+  }
+
+  .admin-login-container {
+    border-radius: 18px;
+  }
+
+  .login-brand {
+    padding: 22px 13px;
+  }
+
+  .brand-top {
+    font-size: 9px;
+
+    padding: 5px 9px;
+  }
+
+  .ganpati-logo {
+    width: 82px;
+    height: 82px;
+
+    margin: 13px 0 9px;
+  }
+
+  .ganpati-logo img {
+    padding: 5px;
+  }
+
+  .login-brand h1 {
+    font-size: 21px;
+  }
+
+  .brand-location {
+    font-size: 16px;
+  }
+
+  .brand-info {
+    max-width: 205px;
+
+    margin-top: 14px;
+  }
+
+  .brand-info div {
+    padding: 8px;
+  }
+
+  .brand-info strong {
+    font-size: 16px;
+  }
+
+  .brand-info span {
+    font-size: 8px;
+  }
+
+  .login-card {
+    padding: 25px 15px 22px;
+  }
+
+  .login-header {
+    margin-bottom: 19px;
+  }
+
+  .login-icon {
+    width: 52px;
+    height: 52px;
+
+    font-size: 22px;
+  }
+
+  .login-header h2 {
+    font-size: 23px;
+  }
+
+  .login-header p {
+    font-size: 11px;
+  }
+
+  .input-wrapper input {
+    height: 46px;
+
+    font-size: 13px;
+  }
+
+  .login-submit {
+    height: 48px;
+
+    font-size: 13px;
+  }
+
+  .back-button {
+    height: 42px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+
+    transition: none !important;
+  }
+}

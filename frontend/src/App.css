@@ -1,0 +1,591 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, "Noto Sans Devanagari", sans-serif;
+  background: #fff7e8;
+  color: #3b2020;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 25px 20px 0;
+}
+
+
+/* ================= HEADER ================= */
+
+.mandal-header {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+
+  background: #ffffff;
+  border-top: 6px solid #f07800;
+
+  border-radius: 20px;
+
+  padding: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 30px;
+
+  box-shadow: 0 8px 25px rgba(100, 40, 0, 0.12);
+}
+
+.mandal-logo,
+.kranti-logo {
+  width: 140px;
+  height: 140px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+.header-text {
+  flex: 1;
+  text-align: center;
+}
+
+.bappa-title {
+  color: #e35d00;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.header-text h1 {
+  margin: 10px 0;
+
+  color: #8f1515;
+
+  font-size: 38px;
+  line-height: 1.25;
+}
+
+.established {
+  margin: 5px 0;
+
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.festival {
+  display: inline-block;
+
+  margin-top: 10px;
+
+  padding: 8px 20px;
+
+  border: 2px solid #f07800;
+  border-radius: 25px;
+
+  color: #8f1515;
+
+  font-weight: bold;
+}
+
+
+/* ================= MAIN ================= */
+
+.main-grid {
+  width: 100%;
+  max-width: 1150px;
+
+  margin: 30px auto;
+
+  display: grid;
+
+  grid-template-columns: 1.5fr 1fr;
+
+  gap: 25px;
+}
+
+
+/* ================= CARD ================= */
+
+.card {
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  padding: 30px;
+
+  box-shadow: 0 8px 25px rgba(100, 40, 0, 0.10);
+}
+
+.card h2 {
+  margin-top: 0;
+
+  text-align: center;
+
+  color: #8f1515;
+
+  font-size: 25px;
+}
+
+
+/* ================= FORM ================= */
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 16px;
+  margin-bottom: 7px;
+
+  font-weight: bold;
+
+  color: #563535;
+}
+
+input,
+select {
+  width: 100%;
+
+  padding: 14px;
+
+  border: 1px solid #cccccc;
+
+  border-radius: 9px;
+
+  font-size: 16px;
+
+  background: #ffffff;
+
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: #f07800;
+
+  box-shadow: 0 0 0 2px rgba(240, 120, 0, 0.10);
+}
+
+button {
+  width: 100%;
+
+  margin-top: 25px;
+
+  padding: 15px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #f07800;
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #d96300;
+}
+
+button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* ================= QR ================= */
+
+.qr-card {
+  text-align: center;
+}
+
+.scan-heading {
+  font-weight: bold;
+
+  color: #8f1515;
+}
+
+.upi-qr {
+  display: block;
+
+  width: 260px;
+  height: 260px;
+
+  max-width: 100%;
+
+  margin: 15px auto;
+
+  object-fit: contain;
+
+  border: 3px solid #f07800;
+
+  border-radius: 12px;
+
+  padding: 5px;
+
+  background: white;
+}
+
+.qr-card h3 {
+  margin-bottom: 5px;
+
+  color: #8f1515;
+}
+
+.upi-id {
+  font-size: 15px;
+
+  font-weight: bold;
+
+  word-break: break-word;
+}
+
+.scan-text {
+  margin-top: 20px;
+
+  padding: 12px;
+
+  background: #fff0cc;
+
+  border-radius: 8px;
+
+  font-weight: bold;
+}
+
+
+/* ================= RECEIPT ================= */
+
+.receipt-card {
+  width: 100%;
+  max-width: 1150px;
+
+  margin: 30px auto;
+
+  padding: 30px;
+
+  background: white;
+
+  border: 2px dashed #f07800;
+
+  border-radius: 18px;
+
+  box-shadow: 0 8px 25px rgba(100, 40, 0, 0.10);
+}
+
+.receipt-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 20px;
+
+  text-align: center;
+
+  margin-bottom: 20px;
+}
+
+.receipt-logo {
+  width: 80px;
+  height: 80px;
+
+  object-fit: contain;
+}
+
+.receipt-header h2 {
+  margin: 0;
+
+  color: #8f1515;
+}
+
+.receipt-header p {
+  margin-bottom: 0;
+}
+
+.success {
+  text-align: center;
+
+  padding: 12px;
+
+  background: #e7f8e7;
+
+  color: green;
+
+  border-radius: 8px;
+
+  font-weight: bold;
+}
+
+.receipt-info {
+  margin-top: 20px;
+}
+
+.receipt-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 13px;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+.amount-row {
+  font-size: 20px;
+
+  color: #8f1515;
+}
+
+.receipt-footer {
+  margin-top: 20px;
+
+  text-align: center;
+
+  color: #d43b00;
+
+  font-weight: bold;
+
+  line-height: 1.8;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+  width: 100%;
+
+  margin-top: 40px;
+
+  padding: 20px;
+
+  background: #8f1515;
+
+  color: white;
+
+  text-align: center;
+
+  line-height: 1.8;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 900px) {
+
+  .mandal-header {
+    gap: 15px;
+  }
+
+  .mandal-logo,
+  .kranti-logo {
+    width: 110px;
+    height: 110px;
+  }
+
+  .header-text h1 {
+    font-size: 28px;
+  }
+
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  .app {
+    padding: 12px 10px 0;
+  }
+
+  .mandal-header {
+    flex-direction: column;
+
+    padding: 20px 12px;
+
+    gap: 10px;
+
+    border-radius: 15px;
+  }
+
+  .mandal-logo,
+  .kranti-logo {
+    width: 95px;
+    height: 95px;
+  }
+
+  .header-text {
+    width: 100%;
+  }
+
+  .bappa-title {
+    font-size: 17px;
+  }
+
+  .header-text h1 {
+    font-size: 24px;
+
+    line-height: 1.35;
+
+    margin: 8px 0;
+  }
+
+  .established {
+    font-size: 16px;
+  }
+
+  .festival {
+    font-size: 14px;
+
+    padding: 7px 12px;
+  }
+
+
+  .main-grid {
+    display: flex;
+
+    flex-direction: column;
+
+    margin: 18px auto;
+
+    gap: 18px;
+  }
+
+
+  .card {
+    padding: 20px 16px;
+
+    border-radius: 15px;
+  }
+
+  .card h2 {
+    font-size: 22px;
+  }
+
+
+  label {
+    font-size: 15px;
+  }
+
+  input,
+  select {
+    padding: 13px;
+
+    font-size: 16px;
+  }
+
+  button {
+    padding: 14px;
+
+    font-size: 17px;
+  }
+
+
+  .upi-qr {
+    width: 220px;
+    height: 220px;
+  }
+
+  .upi-id {
+    font-size: 14px;
+  }
+
+
+  .receipt-card {
+    padding: 20px 15px;
+
+    margin-top: 18px;
+  }
+
+  .receipt-header {
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .receipt-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .receipt-header h2 {
+    font-size: 21px;
+
+    line-height: 1.4;
+  }
+
+
+  .receipt-row {
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding: 11px 5px;
+  }
+
+  .amount-row {
+    font-size: 19px;
+  }
+
+
+  footer {
+    margin-top: 25px;
+
+    padding: 16px 10px;
+
+    font-size: 14px;
+  }
+}
+
+
+/* ================= VERY SMALL MOBILE ================= */
+
+@media (max-width: 380px) {
+
+  .header-text h1 {
+    font-size: 21px;
+  }
+
+  .mandal-logo,
+  .kranti-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .card {
+    padding: 17px 13px;
+  }
+
+  .upi-qr {
+    width: 190px;
+    height: 190px;
+  }
+}
