@@ -30,11 +30,18 @@ The website is designed to provide information about the Ganesh Mandal, upcoming
 ## 📂 Project Structure
 
 ```text
-Kranti-Yuvak-Ganesh-Mandal/
+Aapal_Mandal/
+├── backend/
+│   ├── Dockerfile
+│   ├── db.js
+│   ├── server.js
+│   └── package.json
 │
-├── index.html
-├── style.css
-├── script.js
-├── images/
-├── README.md
-└── other project files
+└── frontend/
+    ├── Dockerfile
+    ├── dist/
+    ├── src/
+    ├── public/
+    ├── nginx.conf
+    ├── vite.config.js
+    └── package.json
