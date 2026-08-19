@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import "./App.css";
 
-const API_URL = "http://localhost:5000/api/receipts";
-const EXPENSE_API_URL = "http://localhost:5000/api/expenses";
+const API_URL = "https://aapal-mandal-backend.onrender.com/api/receipts";
+const EXPENSE_API_URL = "https://aapal-mandal-backend.onrender.com/api/expenses";
 
 const MANDAL_GROUP_URL =
   "https://chat.whatsapp.com/JXTUsGhwPNSCLoFC3O0y37";
