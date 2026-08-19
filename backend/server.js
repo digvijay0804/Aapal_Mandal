@@ -31,6 +31,62 @@ app.get("/", (req, res) => {
 
 
 // =====================================================
+// CREATE RECEIPTS TABLE
+// =====================================================
+
+const createReceiptTable = async () => {
+    try {
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS receipts (
+                id SERIAL PRIMARY KEY,
+                receipt_no VARCHAR(50) UNIQUE NOT NULL,
+                donor_name VARCHAR(255) NOT NULL,
+                mobile VARCHAR(20) NOT NULL,
+                amount NUMERIC(12,2) NOT NULL,
+                payment_mode VARCHAR(50) NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `);
+
+        console.log("Receipts table ready 🚩");
+
+    } catch (error) {
+        console.error(
+            "Receipt Table Error:",
+            error.message
+        );
+    }
+};
+
+
+// =====================================================
+// CREATE EXPENSE TABLE
+// =====================================================
+
+const createExpenseTable = async () => {
+    try {
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS expenses (
+                id SERIAL PRIMARY KEY,
+                item_name VARCHAR(255) NOT NULL,
+                amount NUMERIC(12,2) NOT NULL,
+                expense_date DATE NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `);
+
+        console.log("Expenses table ready 🚩");
+
+    } catch (error) {
+        console.error(
+            "Expense Table Error:",
+            error.message
+        );
+    }
+};
+
+
+// =====================================================
 // CREATE RECEIPT
 // =====================================================
 
@@ -42,10 +98,6 @@ app.post("/api/receipts", async (req, res) => {
             amount,
             payment_mode,
         } = req.body;
-
-        // =================================================
-        // VALIDATION
-        // =================================================
 
         if (
             !donor_name ||
@@ -75,10 +127,7 @@ app.post("/api/receipts", async (req, res) => {
             });
         }
 
-        // =================================================
-        // GENERATE RECEIPT NUMBER
-        // =================================================
-
+        // Generate next receipt number
         const receiptNoResult = await pool.query(
             `
             SELECT
@@ -97,15 +146,12 @@ app.post("/api/receipts", async (req, res) => {
         );
 
         const nextNumber =
-            receiptNoResult.rows[0].next_number;
+            Number(receiptNoResult.rows[0].next_number);
 
         const receiptNo =
             `GR-${String(nextNumber).padStart(4, "0")}`;
 
-        // =================================================
-        // INSERT RECEIPT
-        // =================================================
-
+        // Save receipt
         const result = await pool.query(
             `
             INSERT INTO receipts
@@ -130,16 +176,8 @@ app.post("/api/receipts", async (req, res) => {
 
         const receipt = result.rows[0];
 
-        // =================================================
-        // WHATSAPP NUMBER
-        // =================================================
-
         const whatsappNumber =
             `91${cleanMobile}`;
-
-        // =================================================
-        // RESPONSE
-        // =================================================
 
         res.status(201).json({
             message:
@@ -299,10 +337,6 @@ app.put("/api/receipts/:id", async (req, res) => {
             payment_mode,
         } = req.body;
 
-        // =================================================
-        // VALIDATION
-        // =================================================
-
         if (
             !donor_name ||
             !mobile ||
@@ -341,10 +375,6 @@ app.put("/api/receipts/:id", async (req, res) => {
             });
         }
 
-        // =================================================
-        // UPDATE
-        // =================================================
-
         const result =
             await pool.query(
                 `
@@ -377,10 +407,6 @@ app.put("/api/receipts/:id", async (req, res) => {
 
         const receipt =
             result.rows[0];
-
-        // =================================================
-        // WHATSAPP
-        // =================================================
 
         res.json({
             message:
@@ -470,6 +496,332 @@ app.delete("/api/receipts/:id", async (req, res) => {
 
 
 // =====================================================
+// CREATE EXPENSE
+// =====================================================
+
+app.post("/api/expenses", async (req, res) => {
+    try {
+        const {
+            item_name,
+            item,
+            expense_name,
+            amount,
+            expense_date,
+            date,
+        } = req.body;
+
+        const finalItemName =
+            item_name ||
+            item ||
+            expense_name;
+
+        const finalDate =
+            expense_date ||
+            date;
+
+        if (
+            !finalItemName ||
+            !amount ||
+            !finalDate
+        ) {
+            return res.status(400).json({
+                message:
+                    "Item name, amount and date are required",
+            });
+        }
+
+        if (Number(amount) <= 0) {
+            return res.status(400).json({
+                message:
+                    "Amount must be greater than 0",
+            });
+        }
+
+        const result = await pool.query(
+            `
+            INSERT INTO expenses
+            (
+                item_name,
+                amount,
+                expense_date
+            )
+            VALUES ($1, $2, $3)
+            RETURNING *
+            `,
+            [
+                finalItemName.trim(),
+                Number(amount),
+                finalDate,
+            ]
+        );
+
+        res.status(201).json({
+            message:
+                "Expense added successfully 🚩",
+
+            expense:
+                result.rows[0],
+        });
+
+    } catch (error) {
+        console.error(
+            "Expense Create Error:",
+            error
+        );
+
+        res.status(500).json({
+            message:
+                "Expense creation failed",
+
+            error:
+                error.message,
+        });
+    }
+});
+
+
+// =====================================================
+// GET ALL EXPENSES
+// =====================================================
+
+app.get("/api/expenses", async (req, res) => {
+    try {
+        const result = await pool.query(
+            `
+            SELECT *
+            FROM expenses
+            ORDER BY expense_date DESC, created_at DESC
+            `
+        );
+
+        const totalExpenses =
+            result.rows.reduce(
+                (total, expense) =>
+                    total + Number(expense.amount),
+                0
+            );
+
+        res.json({
+            message:
+                "Expenses fetched successfully 🚩",
+
+            total_expenses:
+                totalExpenses,
+
+            expenses:
+                result.rows,
+        });
+
+    } catch (error) {
+        console.error(
+            "Expense History Error:",
+            error
+        );
+
+        res.status(500).json({
+            message:
+                "Failed to fetch expenses",
+
+            error:
+                error.message,
+        });
+    }
+});
+
+
+// =====================================================
+// GET SINGLE EXPENSE
+// =====================================================
+
+app.get("/api/expenses/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const result = await pool.query(
+            `
+            SELECT *
+            FROM expenses
+            WHERE id = $1
+            `,
+            [id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({
+                message:
+                    "Expense not found",
+            });
+        }
+
+        res.json({
+            message:
+                "Expense fetched successfully 🚩",
+
+            expense:
+                result.rows[0],
+        });
+
+    } catch (error) {
+        console.error(
+            "Single Expense Error:",
+            error
+        );
+
+        res.status(500).json({
+            message:
+                "Failed to fetch expense",
+
+            error:
+                error.message,
+        });
+    }
+});
+
+
+// =====================================================
+// UPDATE EXPENSE
+// =====================================================
+
+app.put("/api/expenses/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const {
+            item_name,
+            item,
+            expense_name,
+            amount,
+            expense_date,
+            date,
+        } = req.body;
+
+        const finalItemName =
+            item_name ||
+            item ||
+            expense_name;
+
+        const finalDate =
+            expense_date ||
+            date;
+
+        if (
+            !finalItemName ||
+            !amount ||
+            !finalDate
+        ) {
+            return res.status(400).json({
+                message:
+                    "Item name, amount and date are required",
+            });
+        }
+
+        if (Number(amount) <= 0) {
+            return res.status(400).json({
+                message:
+                    "Amount must be greater than 0",
+            });
+        }
+
+        const result = await pool.query(
+            `
+            UPDATE expenses
+            SET
+                item_name = $1,
+                amount = $2,
+                expense_date = $3
+            WHERE id = $4
+            RETURNING *
+            `,
+            [
+                finalItemName.trim(),
+                Number(amount),
+                finalDate,
+                id,
+            ]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({
+                message:
+                    "Expense not found",
+            });
+        }
+
+        res.json({
+            message:
+                "Expense updated successfully 🚩",
+
+            expense:
+                result.rows[0],
+        });
+
+    } catch (error) {
+        console.error(
+            "Expense Update Error:",
+            error
+        );
+
+        res.status(500).json({
+            message:
+                "Expense update failed",
+
+            error:
+                error.message,
+        });
+    }
+});
+
+
+// =====================================================
+// DELETE EXPENSE
+// =====================================================
+
+app.delete("/api/expenses/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const result = await pool.query(
+            `
+            DELETE FROM expenses
+            WHERE id = $1
+            RETURNING *
+            `,
+            [id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({
+                message:
+                    "Expense not found",
+            });
+        }
+
+        res.json({
+            message:
+                "Expense deleted successfully 🗑️",
+
+            expense:
+                result.rows[0],
+        });
+
+    } catch (error) {
+        console.error(
+            "Expense Delete Error:",
+            error
+        );
+
+        res.status(500).json({
+            message:
+                "Expense deletion failed",
+
+            error:
+                error.message,
+        });
+    }
+});
+
+
+// =====================================================
 // DATABASE TEST
 // =====================================================
 
@@ -527,9 +879,14 @@ const PORT =
 app.listen(
     PORT,
     "0.0.0.0",
-    () => {
+    async () => {
+
         console.log(
             `Server running on port ${PORT}`
         );
+
+        // Create both tables automatically
+        await createReceiptTable();
+        await createExpenseTable();
     }
 );
