@@ -1846,64 +1846,87 @@ a {
      ===================================================== */
 
   .members-section {
-    padding: 70px 15px;
-  }
+  padding: 70px 15px;
+}
 
-  .section-title {
-    margin-bottom: 35px;
-  }
+.section-title {
+  margin-bottom: 35px;
+}
 
-  .section-title h2 {
-    font-size: 31px;
-  }
+.section-title h2 {
+  font-size: 31px;
+}
 
-  .section-title p {
-    font-size: 12px;
-    line-height: 1.7;
-  }
+.section-title p {
+  font-size: 12px;
+  line-height: 1.7;
+}
 
-  .members-list {
-    width: 100%;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
+.members-list {
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
 
-  .member-row {
-    min-height: 115px;
+.member-row {
+  min-height: 115px;
 
-    grid-template-columns: 48px 1fr auto;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
 
-    padding: 15px 14px;
+  align-items: center;
 
-    border-radius: 13px;
-  }
+  padding: 15px 14px;
 
-  .member-index {
-    width: 36px;
-    height: 36px;
+  border-radius: 13px;
+}
 
-    font-size: 11px;
-  }
+.member-index {
+  width: 36px;
+  height: 36px;
 
-  .member-details {
-    padding: 0 8px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .member-name {
-    font-size: 13px;
-    line-height: 1.4;
-  }
+  font-size: 11px;
+}
 
-  .member-role {
-    margin-top: 5px; 
-  padding: 3px 9px; 
+.member-details {
+  min-width: 0;
+  padding: 0 5px;
+}
+
+.member-name {
+  display: block;
+
+  min-width: 0;
+
+  padding: 0;
+
+  font-size: 13px;
+  line-height: 1.4;
+
+  word-break: normal;
+}
+
+.member-role {
+  display: inline-block;
+
+  margin-top: 6px;
+
+  padding: 3px 9px;
+
   font-size: 8px;
-  white-space: nowrap;
-  }
 
-  .member-arrow {
-    font-size: 16px;
-  }
+  white-space: nowrap;
+
+  width: fit-content;
+}
+
+.member-arrow {
+  display: none;
+}
 
   /* =====================================================
      DONATION
