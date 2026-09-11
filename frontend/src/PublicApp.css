@@ -1871,7 +1871,7 @@ a {
   .member-row {
     min-height: 115px;
 
-    grid-template-columns: 48px 1fr 20px;
+    grid-template-columns: 48px 1fr auto;
 
     padding: 15px 14px;
 
@@ -1895,7 +1895,10 @@ a {
   }
 
   .member-role {
-   display: none;
+    margin-top: 5px; 
+  padding: 3px 9px; 
+  font-size: 8px;
+  white-space: nowrap;
   }
 
   .member-arrow {
