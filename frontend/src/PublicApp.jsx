@@ -127,7 +127,7 @@ function PublicApp() {
             </h1>
 
             <p>
-              📍 {mandal.location}
+              {mandal.location}
             </p>
 
           </div>
@@ -170,14 +170,71 @@ function PublicApp() {
             🙏 सार्वजनिक गणेशोत्सव 2026
           </span>
 
-          <h2>
-            क्रांती युवक
-            <br />
-            <span>गणेश मंडळ</span>
-          </h2>
+          {/* ARCH / SEMI-CIRCLE HERO TITLE */}
+          <div
+            className="hero-title-arch"
+            aria-label="क्रांती युवक गणेश मंडळ"
+            style={{
+              width: "min(92vw, 850px)",
+              height: "clamp(115px, 16vw, 175px)",
+              margin: "0 auto",
+              position: "relative",
+              overflow: "visible",
+            }}
+          >
+
+            <svg
+              viewBox="0 0 900 210"
+              role="img"
+              aria-label="क्रांती युवक गणेश मंडळ"
+              style={{
+                width: "100%",
+                height: "100%",
+                overflow: "visible",
+                display: "block",
+              }}
+            >
+
+              <defs>
+
+                <path
+                  id="hero-title-curve"
+                  d="M 85 170 Q 450 -10 815 170"
+                  fill="none"
+                />
+
+              </defs>
+
+              <text
+                fill="#ffffff"
+                fontSize="72"
+                fontWeight="800"
+                textAnchor="middle"
+                style={{
+                  fontFamily:
+                    '"Noto Sans Devanagari", "Mukta", "Nirmala UI", sans-serif',
+                  paintOrder: "stroke fill",
+                  stroke: "rgba(70, 20, 5, 0.35)",
+                  strokeWidth: "2px",
+                  letterSpacing: "1px",
+                }}
+              >
+
+                <textPath
+                  href="#hero-title-curve"
+                  startOffset="50%"
+                >
+                  क्रांती युवक गणेश मंडळ
+                </textPath>
+
+              </text>
+
+            </svg>
+
+          </div>
 
           <p>
-            📍 {mandal.location}
+            {mandal.location}
           </p>
 
           <div className="hero-2026-divider"></div>
@@ -324,29 +381,38 @@ function PublicApp() {
             </h3>
 
             <p>
+
               <strong>
                 {mandal.name}
               </strong>{" "}
+
               हे {mandal.location} येथील सामाजिक,
               सांस्कृतिक आणि धार्मिक उपक्रम राबवणारे
               मंडळ आहे.
+
             </p>
 
             <p>
+
               सन{" "}
+
               <strong>
                 {mandal.established}
               </strong>{" "}
+
               पासून मंडळाने गणेशोत्सवाच्या माध्यमातून
               भक्ती, सामाजिक एकता आणि समाजसेवेची
               परंपरा जपली आहे.
+
             </p>
 
             <p>
+
               सर्व नागरिकांच्या सहकार्याने आणि
               गणपती बाप्पांच्या आशीर्वादाने
               गणेशोत्सव दरवर्षी उत्साहात साजरा
               केला जातो.
+
             </p>
 
           </div>
@@ -711,9 +777,24 @@ function PublicApp() {
             className="contact-card"
           >
 
+            {/* INSTAGRAM ICON */}
             <div className="contact-card-icon">
-              ◎
+
+              <svg
+                viewBox="0 0 24 24"
+                width="32"
+                height="32"
+                fill="currentColor"
+                aria-label="Instagram"
+                role="img"
+              >
+
+                <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm9.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
+
+              </svg>
+
             </div>
+
 
             <div>
 
@@ -736,9 +817,24 @@ function PublicApp() {
 
           <div className="contact-card">
 
+            {/* LOCATION ICON */}
             <div className="contact-card-icon">
-              📍
+
+              <svg
+                viewBox="0 0 24 24"
+                width="32"
+                height="32"
+                fill="currentColor"
+                aria-label="Location"
+                role="img"
+              >
+
+                <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/>
+
+              </svg>
+
             </div>
+
 
             <div>
 
