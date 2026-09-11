@@ -1895,11 +1895,7 @@ a {
   }
 
   .member-role {
-    margin-top: 5px;
-
-    padding: 3px 9px;
-
-    font-size: 8px;
+   display: none;
   }
 
   .member-arrow {
